@@ -11,7 +11,6 @@ MEM=30g
 GENOMESTRAIN=Silveira
 INDIR=C_posadasii/fastq
 TOPOUTDIR=tmp
-ALNFOLDER=aln
 HTCEXT=cram
 HTCFORMAT=cram
 
@@ -66,7 +65,7 @@ do
   DDFILE=$TOPOUTDIR/${RUN}.DD.bam
   REALIGN=$TOPOUTDIR/${RUN}.realign.bam
   INTERVALS=$TOPOUTDIR/${RUN}.intervals
-  FINALFILE=$ALNFOLDER/${RUN}.$HTCEXT    
+  FINALFILE=$ASMALNFOLDER/${RUN}.$HTCEXT    
   CENTER=$(echo $CENTER | perl -p -e 's/ +/_/g')
   READGROUP="@RG\tID:$RUN\tSM:$STRAIN\tLB:$RUN\tPL:illumina\tCN:$CENTER"
   echo "RG=$READGROUP"
