@@ -14,9 +14,9 @@ bedwindows = read.table(sprintf("coverage/%s.mosdepth.10000bp.gg.tab.gz",name),
                         header=F)
 colnames(bedwindows) = c("CHR","Start","End","Depth","Strain","Accession")
 chrsizes = aggregate(End ~ CHR, data=bedwindows,max)
-chrlist = subset(chrsizes$CHR,chrsizes$End > 50000)
+chrlist = subset(chrsizes$CHR,chrsizes$End > 500000)
 chrlist = factor(chrlist)
-print(chrlist)
+
 d=bedwindows[bedwindows$CHR %in% chrlist, ]
 d <- d[order(d$CHR, d$Start), ]
 d$CHR <- factor(d$CHR)
