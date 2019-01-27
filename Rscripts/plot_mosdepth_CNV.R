@@ -13,12 +13,11 @@ manualColors = c("dodgerblue2","red1","grey20")
 bedwindows = read.table(sprintf("coverage/%s.mosdepth.10000bp.gg.tab.gz",name),
                         header=F)
 colnames(bedwindows) = c("CHR","Start","End","Depth","Strain","Accession")
-#bedwindows = subset(bedwindows,bedwindows$Chr != "MT_CBS_6936") # drop MT for this
 chrsizes = aggregate(End ~ CHR, data=bedwindows,max)
 chrlist = subset(chrsizes$CHR,chrsizes$End > 50000)
+chrlist = factor(chrlist)
 print(chrlist)
-#d=bedwindows[bedwindows$CHR %in% chrlist, ]
-d=bedwindows
+d=bedwindows[bedwindows$CHR %in% chrlist, ]
 d <- d[order(d$CHR, d$Start), ]
 d$index = rep.int(seq_along(unique(d$CHR)),
                   times = tapply(d$Start,d$CHR,length)) 
