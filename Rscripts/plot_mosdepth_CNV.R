@@ -19,6 +19,7 @@ chrlist = factor(chrlist)
 print(chrlist)
 d=bedwindows[bedwindows$CHR %in% chrlist, ]
 d <- d[order(d$CHR, d$Start), ]
+d$CHR <- factor(d$CHR)
 d$index = rep.int(seq_along(unique(d$CHR)),
                   times = tapply(d$Start,d$CHR,length)) 
 
