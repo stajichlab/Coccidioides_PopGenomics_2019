@@ -17,8 +17,8 @@ colnames(bedwindows) = c("CHR","Start","End","Depth","Strain","Accession")
 chrsizes = aggregate(End ~ CHR, data=bedwindows,max)
 chrlist = subset(chrsizes$CHR,chrsizes$End > 50000)
 print(chrlist)
-d=bedwindows[bedwindows$CHR %in% chrlist, ]
-
+#d=bedwindows[bedwindows$CHR %in% chrlist, ]
+d=bedwindows
 d <- d[order(d$CHR, d$Start), ]
 d$index = rep.int(seq_along(unique(d$CHR)),
                   times = tapply(d$Start,d$CHR,length)) 
